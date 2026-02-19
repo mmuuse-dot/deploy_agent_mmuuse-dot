@@ -1,1 +1,5 @@
-# deploy_agent_mmuuse-dot
+1. This project contains a shell script named setup_project.sh that automates the creation and configuration of a Student Attendance Tracker workspace.
+2. To run the script, first clone the repository using git clone https:// my personal token and the repository, then navigate into the project directory and make the script executable using chmod u+x setup_project.sh
+3. This script will prompt you to enter a project name and automatically create a directory named attendance_tracker_1_ with the required structure, including attendance_checker.py, a helper directory containing assets.csv and config.json, and a reports directory containing reports.log.
+4. During setup, you will be asked whether you want to update the attendance warning and failure thresholds, and the script will validate and apply any changes using sed. Before completing, it performs a health check using python3 --version to confirm that Python is installed.
+5. The script also includes a signal trap to handle interruptions. To trigger the archive feature, simply press Ctrl+C while the script is running. When interrupted, the script automatically creates an archive named attendance_tracker_<input>_. deletes the incomplete project directory to keep the workspace clean, and exits safely.
