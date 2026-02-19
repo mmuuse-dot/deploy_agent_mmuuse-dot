@@ -1,5 +1,35 @@
-1. This project contains a shell script named setup_project.sh that automates the creation and configuration of a Student Attendance Tracker workspace.
-2. To run the script, first clone the repository using git clone https:// my personal token and the repository, then navigate into the project directory and make the script executable using chmod u+x setup_project.sh
-3. This script will prompt you to enter a project name and automatically create a directory named attendance_tracker_1_ with the required structure, including attendance_checker.py, a helper directory containing assets.csv and config.json, and a reports directory containing reports.log.
-4. During setup, you will be asked whether you want to update the attendance warning and failure thresholds, and the script will validate and apply any changes using sed. Before completing, it performs a health check using python3 --version to confirm that Python is installed.
-5. The script also includes a signal trap to handle interruptions. To trigger the archive feature, simply press Ctrl+C while the script is running. When interrupted, the script automatically creates an archive named attendance_tracker_<input>_. deletes the incomplete project directory to keep the workspace clean, and exits safely.
+# Project Factory – Student Attendance Tracker Bootstrap
+
+The Power of Infrastructure as Code (IaC) 
+Automating project setup with shell scripting
+
+
+1. Clone the repository
+
+   bash
+   git clone https://github.com/mmuuse-dot/deploy_agent_mmuuse-dot.git
+   cd deploy_agent_mmuuse-dot
+ 
+ What this project does
+
+This repository contains a "Project Factory" — a single Bash script ('setup_project.sh') that automatically:
+
+1. Asks for a project identifier  
+2. Creates a folder named 'attendance_tracker_<identifier>'
+3. Sets up the correct directory structure with all required files
+4. Let the user optionally customize attendance warning/failure thresholds
+5. Updates `config.json` in-place using 'sed'
+6. Performs a basic health check (is `python3` available?)
+7. Gracefully handles Ctrl+C ( SIGINT received - cleaning up incomplete project):  
+   - Archive whatever was created so far  
+   -  Cleans up the incomplete project
+ # Final folder structure created by the script
+ attendance_tracker_1_
+├── attendance_checker.py
+├── Helpers/
+│   ├── assets.csv
+│   └── config.json          
+└── reports/
+└── reports.log
+# Run the script
+./setup_project.sh
